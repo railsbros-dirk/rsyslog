@@ -29,6 +29,11 @@ attribute "rsyslog/server",
   :description => "Is this node an rsyslog server?",
   :default => "false"
 
+attribute "rsyslog/listen_ip",
+  :display_name => "Rsyslog Listen IP",
+  :description => "Set rsyslog listen ip address for incoming connections. This resolves to the $InputPTCPServerListenIP option for TCP and $UDPServerAddress for UDP.",
+  :default => "0.0.0.0"
+
 attribute "rsyslog/server_ip",
   :display_name => "Rsyslog Server IP Address",
   :description => "Set rsyslog server ip address explicitly"

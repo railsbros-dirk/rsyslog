@@ -26,9 +26,11 @@ $ModLoad imklog   # provides kernel logging support (previously done by rklogd)
 <% case @protocol -%>
 <% when "tcp" -%>
 $ModLoad imtcp
+$InputPTCPServerListenIP <%= node['rsyslog']['listen_ip'] %>
 $InputTCPServerRun <%= node['rsyslog']['port'] %>
 <% when "udp" -%>
 $ModLoad imudp
+$UDPServerAddress <%= node['rsyslog']['listen_ip'] %>
 $UDPServerRun <%= node['rsyslog']['port'] %>
 <% end -%>
 <% end -%>

@@ -37,6 +37,8 @@ See `attributes/default.rb` for default values.
   this specifies the directory where the logs should be stored.
 * `node['rsyslog']['server']` - Determined automaticaly and set to true on
   the server.
+* `node['rsyslog']['listen_ip']` - The IP on which the server will
+  accept incoming messages. Defaults to `0.0.0.0`.
 * `node['rsyslog']['server_ip']` - If not defined then search will be used
   to determine rsyslog server. Default is `nil`.
 * `node['rsyslog']['server_search']` - Specify the criteria for the server
