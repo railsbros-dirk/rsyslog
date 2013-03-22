@@ -4,14 +4,15 @@ maintainer_email  "cookbooks@opscode.com"
 license           "Apache 2.0"
 description       "Installs and configures rsyslog"
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           "1.1.1"
+version           "1.5.0"
 
 recipe            "rsyslog", "Installs rsyslog"
 recipe            "rsyslog::client", "Sets up a client to log to a remote rsyslog server"
 recipe            "rsyslog::server", "Sets up an rsyslog server"
 
-supports          "ubuntu", ">= 8.04"
+supports          "ubuntu"
 supports          "debian", ">= 5.0"
+supports          "redhat", ">= 6.0"
 
 attribute "rsyslog",
   :display_name => "Rsyslog",
@@ -51,3 +52,33 @@ attribute "rsyslog/remote_logs",
   :display_name => "Remote Logs",
   :description => "Specifies whether redirect all log from client to server",
   :default => "true"
+
+attribute "rsyslog/user",
+  :display_name => "User",
+  :description => "The owner of Rsyslog config files and directories",
+  :default => "root"
+
+attribute "rsyslog/group",
+  :display_name => "Group",
+  :description => "The group-owner of Rsyslog config files and directories",
+  :default => "adm"
+
+attribute "rsyslog/service_name",
+  :display_name => "Service name",
+  :description => "The name of the service for the platform",
+  :default => "rsyslog"
+
+attribute "rsyslog/max_message_size",
+  :display_name => "Maximum Rsyslog message size",
+  :description => "Specifies the maximum size of allowable Rsyslog messages",
+  :default => "2k"
+
+attribute "rsyslog/preserve_fqdn",
+  :display_name => "Preserve FQDN",
+  :description => "Specifies if the short or full host name will be used. The default off setting is more compatible.",
+  :default => "off"
+
+attribute "rsyslog/priv_seperation",
+  :display_name => "Privilege separation",
+  :description => "Whether or not to make use of Rsyslog privilege separation",
+  :default => "false"
